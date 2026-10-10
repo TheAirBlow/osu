@@ -65,6 +65,14 @@ namespace osu.Game.Overlays.Settings.Sections.Gameplay
                     Keywords = new[] { "hp", "bar" },
                     ApplyClassicDefault = c => ((IHasCurrentValue<bool>)c).Current.Value = false,
                 },
+                new SettingsItemV2(new FormCheckBox
+                {
+                    Caption = GameplaySettingsStrings.AnxietyMode,
+                    Current = config.GetBindable<bool>(OsuSetting.AnxietyMode),
+                })
+                {
+                    Keywords = new[] { "accuracy", "grade", "hide", "break", "pause", "anxiety" },
+                },
             };
         }
     }

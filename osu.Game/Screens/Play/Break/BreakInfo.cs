@@ -1,9 +1,12 @@
 ﻿// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
 // See the LICENCE file in the repository root for full licence text.
 
+using osu.Framework.Allocation;
+using osu.Framework.Bindables;
 using osu.Framework.Extensions.LocalisationExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Game.Configuration;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Sprites;
 using osu.Game.Localisation;
@@ -21,6 +24,9 @@ namespace osu.Game.Screens.Play.Break
         // public BreakInfoLine<int> RankDisplay;
         public BreakInfoLine<ScoreRank> GradeDisplay;
 
+        private readonly FillFlowContainer linesContainer;
+        private readonly Bindable<bool> anxietyMode = new Bindable<bool>();
+
         public BreakInfo()
         {
             AutoSizeAxes = Axes.Both;
@@ -37,7 +43,7 @@ namespace osu.Game.Screens.Play.Break
                         Text = BreakInfoStrings.CurrentProgressTitle.ToUpper(),
                         Font = OsuFont.GetFont(weight: FontWeight.Bold, size: 15),
                     },
-                    new FillFlowContainer
+                    linesContainer = new FillFlowContainer
                     {
                         AutoSizeAxes = Axes.Both,
                         Origin = Anchor.TopCentre,
@@ -53,6 +59,13 @@ namespace osu.Game.Screens.Play.Break
                     }
                 },
             };
+        }
+
+        [BackgroundDependencyLoader]
+        private void load(OsuConfigManager config)
+        {
+            config.BindWith(OsuSetting.AnxietyMode, anxietyMode);
+            anxietyMode.BindValueChanged(m => linesContainer.Alpha = m.NewValue ? 0 : 1, true);
         }
     }
 }

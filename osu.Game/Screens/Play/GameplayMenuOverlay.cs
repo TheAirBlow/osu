@@ -16,6 +16,7 @@ using osu.Framework.Localisation;
 using osu.Framework.Platform;
 using osu.Game.Audio;
 using osu.Game.Beatmaps;
+using osu.Game.Configuration;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Containers;
 using osu.Game.Graphics.Sprites;
@@ -256,6 +257,9 @@ namespace osu.Game.Screens.Play
         [Resolved]
         private GameplayState? gameplayState { get; set; }
 
+        [Resolved]
+        private OsuConfigManager config { get; set; } = null!;
+
         private void updateInfoText()
         {
             playInfoText.Clear();
@@ -269,7 +273,7 @@ namespace osu.Game.Screens.Play
                 playInfoText.AddText($"{progress}%", cp => cp.Font = cp.Font.With(weight: FontWeight.Bold));
             }
 
-            if (gameplayState != null)
+            if (gameplayState != null && !config.Get<bool>(OsuSetting.AnxietyMode))
             {
                 playInfoText.NewLine();
                 playInfoText.AddText(BeatmapsetsStrings.ShowScoreboardHeadersAccuracy);

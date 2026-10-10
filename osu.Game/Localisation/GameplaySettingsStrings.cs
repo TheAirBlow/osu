@@ -65,6 +65,11 @@ namespace osu.Game.Localisation
         public static LocalisableString ShowHealthDisplayWhenCantFail => new TranslatableString(getKey(@"show_health_display_when_cant_fail"), @"Show health display even when you can't fail");
 
         /// <summary>
+        /// "Hide performance judgement during gameplay"
+        /// </summary>
+        public static LocalisableString AnxietyMode => new TranslatableString(getKey(@"anxiety_mode"), @"Hide performance judgement during gameplay");
+
+        /// <summary>
         /// "Show replay settings overlay"
         /// </summary>
         public static LocalisableString ShowReplaySettingsOverlay => new TranslatableString(getKey(@"show_replay_settings_overlay"), @"Show replay settings overlay");

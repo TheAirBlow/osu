@@ -152,6 +152,7 @@ namespace osu.Game.Configuration
 
             SetDefault(OsuSetting.HUDVisibilityMode, HUDVisibilityMode.Always);
             SetDefault(OsuSetting.ShowHealthDisplayWhenCantFail, true);
+            SetDefault(OsuSetting.AnxietyMode, false);
             SetDefault(OsuSetting.FadePlayfieldWhenHealthLow, true);
             SetDefault(OsuSetting.KeyOverlay, false);
             SetDefault(OsuSetting.ReplaySettingsOverlay, true);
@@ -351,6 +352,7 @@ namespace osu.Game.Configuration
         HUDVisibilityMode,
 
         ShowHealthDisplayWhenCantFail,
+        AnxietyMode,
         FadePlayfieldWhenHealthLow,
 
         /// <summary>
